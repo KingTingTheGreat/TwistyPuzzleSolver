@@ -1,7 +1,5 @@
 mod twisty_cube;
 use std::io::stdin;
-use std::collections::{HashMap, HashSet};
-
 
 fn main() {
     let mut user_input = String::new();
