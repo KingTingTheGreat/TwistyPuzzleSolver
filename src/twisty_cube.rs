@@ -92,82 +92,83 @@ impl TwistyCube {
     fn set_depth(&mut self, new_depth: i32) {
         self.depth = new_depth;
     }
+    
     fn do_move(&mut self, input:char) {
         match input {
             'U' => {
+                // rotate top face clockwise
                 move_u(1);
-                // rotate top face clockwise
-                // rotate top face clockwise
             }
             'L' => {
-                move_l(1);
                 // rotate left face clockwise
+                move_l(1);
             }
             'F' => {
-                move_f(1);
                 // rotate front face clockwise
+                move_f(1);
             }
             'R' => {
-                move_r(1);
                 // rotate right face clockwise
+                move_r(1);
             }
             'B' => {
-                move_b(1);
                 // rotate back face clockwise
+                move_b(1);
             }
             'D' => {
-                move_d(1);
                 // rotate bottom face clockwise
+                move_d(1);
             }
             'u' => {
-                move_u(3);
                 // rotate top face counter-clockwise
+                move_u(3);
             }
             'l' => {
-                move_l(3);
                 // rotate left face counter-clockwise
+                move_l(3);
             }
             'f' => {
-                move_f(3);
                 // rotate front face counter-clockwise
+                move_f(3);
             }
             'r' => {
-                move_r(3);
                 // rotate right face counter-clockwise
+                move_r(3);
             }
             'b' => {
-                move_b(3);
                 // rotate back face counter-clockwise
+                move_b(3);
             }
             'd' => {
-                move_d(3);
                 // rotate bottom face counter-clockwise
+                move_d(3);
             }
             '0' => {
-                move_u(2);
                 // rotate top face twice
+                move_u(2);
             }
             '1' => {
-                move_l(2);
                 // rotate left face twice
+                move_l(2);
             }
             '2' => {
-                move_f(2);
                 // rotate front face twice
+                move_f(2);
             }
             '3' => {
-                move_r(2);
                 // rotate right face twice
+                move_r(2);
             }
             '4' => {
-                move_b(2);
                 // rotate back face twice
+                move_b(2);
             }
             '5' => {
-                move_d(2);
                 // rotate bottom face twice
+                move_d(2);
             }
             _ => {
+                // invalid move
                 println!("Invalid move: {}", input);
             }        
         }
