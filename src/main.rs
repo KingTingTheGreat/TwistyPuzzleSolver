@@ -8,7 +8,7 @@ fn main() {
     // remove whitespace characters
     let initial_state = user_input.trim().to_string();
     // check if state is valid
-    if !twisty_cube::is_valid_state(initial_state.clone()) {
+    if !twisty_cube::is_valid_state(3, initial_state.clone()) {
         println!("Invalid state");
         return;
     }
