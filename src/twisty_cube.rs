@@ -4,7 +4,7 @@ use std::collections::{HashMap, HashSet};
 /*
 returns boolean indicating whether the state is valid
 this means it is a string of length 54 and contains 9 of each color
- */
+*/
 pub fn is_valid_state(state: String) -> bool {
     // for a 3x3x3 cube
     let total_num_colors = 54;
@@ -19,7 +19,6 @@ pub fn is_valid_state(state: String) -> bool {
     let mut colors:HashMap<char, i32> = HashMap::new();
     // add quantity of each color to hashmap
     for color in state.chars() {
-        // println!("char: {}", color);  // printing each input character
         if colors.contains_key(&color) {
             colors.insert(color, colors[&color] + 1);    
         }
@@ -41,6 +40,9 @@ pub fn is_valid_state(state: String) -> bool {
     return true;
 }
 
+/*
+takes a string representing the state of the cube and returns a 2D vector of characters
+*/
 fn string_to_array(input: &str) -> Vec<Vec<char>> {
     let mut output: Vec<Vec<char>> = Vec::new();
     let mut row: Vec<char> = Vec::new();
