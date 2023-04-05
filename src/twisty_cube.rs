@@ -5,11 +5,11 @@ use std::collections::{HashMap, HashSet};
 returns boolean indicating whether the state is valid
 this means it is a string of length 54 and contains 9 of each color
 */
-pub fn is_valid_state(state: String) -> bool {
+pub fn is_valid_state(dim:i32, state: String) -> bool {
     // for a 3x3x3 cube
-    let total_num_colors = 54;
-    let quantity_per_color = 9;
-    if state.len() != total_num_colors {
+    let total_num_colors = dim* dim * 6;
+    let quantity_per_color = dim * dim;
+    if state.len() != total_num_colors as usize {
         println!("Invalid state length: {}", state.len());
         return false;
     }
@@ -43,11 +43,11 @@ pub fn is_valid_state(state: String) -> bool {
 /*
 takes a string representing the state of the cube and returns a 2D vector of characters
 */
-fn string_to_array(input: &str) -> Vec<Vec<char>> {
+fn string_to_array(dim:i32, input: &str) -> Vec<Vec<char>> {
     let mut output: Vec<Vec<char>> = Vec::new();
     let mut row: Vec<char> = Vec::new();
     for (i, c) in input.chars().enumerate() {
-        if i % 9 == 0 && i != 0 {
+        if i % (dim*dim) as usize == 0 && i != 0 {
             output.push(row);
             row = Vec::new();
         }
@@ -58,6 +58,7 @@ fn string_to_array(input: &str) -> Vec<Vec<char>> {
 }
 
 struct TwistyCube {
+    dim: i32,
     state: String,
     depth: i32, 
     cube: Vec<Vec<char>>,
@@ -66,9 +67,10 @@ struct TwistyCube {
 impl TwistyCube {
     fn new() -> TwistyCube {
         TwistyCube {
+            dim: 3,
             state: String::from("UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"),
             depth: 0,
-            cube: string_to_array("UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"),
+            cube: string_to_array(3, "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"),
         }
     }
     
@@ -81,12 +83,12 @@ impl TwistyCube {
     }
     
     fn set_state(&mut self, new_state: String) {
-        if !is_valid_state(new_state.clone()) {
+        if !is_valid_state(self.dim, new_state.clone()) {
             println!("Invalid state");
             return;
         }
         self.state = new_state;
-        self.cube = string_to_array(&self.state);
+        self.cube = string_to_array(self.dim, &self.state);
     }
 
     fn set_depth(&mut self, new_depth: i32) {
