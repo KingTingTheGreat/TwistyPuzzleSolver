@@ -68,9 +68,9 @@ impl TwistyCube {
     fn new() -> TwistyCube {
         TwistyCube {
             dim: 3,
-            state: String::from("UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"),
+            state: String::from("WWWWWWWWWGGGGGGGGGOOOOOOOOORRRRRRRRRBBBBBBBBBYYYYYYYYY"),
             depth: 0,
-            cube: string_to_array(3, "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"),
+            cube: string_to_array(3, "WWWWWWWWWGGGGGGGGGOOOOOOOOORRRRRRRRRBBBBBBBBBYYYYYYYYY"),
         }
     }
     
